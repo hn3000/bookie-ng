@@ -7,7 +7,7 @@ module.exports = {
   mode: 'development',
 
   entry: {
-    bookie3: './src/index.ts',
+    bookie: './src/index.ts',
     sw: './src/worker.ts',
     dw: './src/data-worker.ts',
     cw: './src/cache-worker.ts'
@@ -46,21 +46,21 @@ module.exports = {
       template: 'src/template.hbs',
       filename: 'index.html',
       inject: true,
-      chunks: ['bookie3']
+      chunks: ['bookie']
     }),
     new HtmlWebpackPlugin({
       title: 'Webpack+ServiceWorker',
       template: 'src/template.hbs',
       filename: 'index-sw.html',
       inject: true,
-      chunks: ['bookie3', 'sw']
+      chunks: ['bookie', 'sw']
     }),
     new HtmlWebpackPlugin({
       title: 'Webpack+ServiceWorker',
       template: 'src/template.hbs',
       filename: 'index-dw.html',
       inject: true,
-      chunks: ['bookie3', 'dw']
+      chunks: ['bookie', 'dw']
     }),
     new webpack.NamedModulesPlugin(),
     /*new webpack.HotModuleReplacementPlugin({

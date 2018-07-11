@@ -120,7 +120,7 @@ var reIIFE = /(?:\/\/|#).*iife.*/;
 var reTITLE = /(?:\/\/|#).*title:(.*?)(\/\/|\r|\n)/;
 var reCOFFEE = /^#.*/;
 
-var marks = [] as string[], errLine;
+var marks = [] as cm.TextMarker[], errLine;
 
 function updated() {
   const editor = codeCM;
@@ -164,6 +164,7 @@ function updated() {
       for ( var i = 0; i < marks.length; ++i) {
         marks[i].clear();
       }
+
       marks.length = 0;
 
       if (!jshint(code)) {
@@ -173,8 +174,9 @@ function updated() {
         if (iifeMatch) {
           code = [ '(function(){', code, '})();' ].join('\n');
         }
-        out = uglify(code);
+        let minifyOut = uglify.minify(code);
 //					href = encodeURI(out);
+        out = minifyOut.code;
         href = out;
         href = href.replace(/%/g, '%25');
         href = href.replace(/"/g, '%22');
@@ -186,8 +188,9 @@ function updated() {
         );
       }
     } catch (e) {
-      var offset = iifeMatch ? 12 : 0, errorPos = editor
-          .posFromIndex(e.pos - offset);
+      var doc = editor.getDoc();
+      var offset = iifeMatch ? 12 : 0, 
+          errorPos = doc.posFromIndex(e.pos - offset);
 
       errLine = editor.addLineClass(errorPos.line, "", "error");
 
