@@ -1,0 +1,19 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Harald Niesche -- developer -- hn3000
+
+# THANKS
+
+    H5BP - for the template,
+    BenP for suggesting the idea,
+    AlexB for asking what a bookmarklet was
+    opus131 for complaining about the lack of updates
+    TypeScript for making 
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    TypeScript, Webpack

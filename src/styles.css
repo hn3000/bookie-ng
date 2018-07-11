@@ -1,0 +1,52 @@
+
+body {
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-size: 16px;
+}
+
+body {
+	height: 100%;
+	margin: 10%;
+}
+
+html, body section.code {
+	height: 80%;
+	position: relative;
+}
+
+section.code .CodeMirror {
+	height: 100%;
+}
+
+.CodeMirror .error {
+	border-bottom: 1px solid red;
+}
+
+section.output {
+	min-height: 10%;
+}
+
+
+/*
+body > div {
+  display: grid;
+}
+*/
+div.code {
+  grid-column: 1;
+}
+div.output {
+  grid-column: 2;
+}
+div.output > div {
+  overflow: auto;
+}
+
+textarea {
+  min-height: 300px;
+}
+
+iframe {
+  min-height: 500px;
+  width: 100%;
+}

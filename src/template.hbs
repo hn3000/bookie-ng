@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title><%= htmlWebpackPlugin.options.title%></title>
+  </head>
+  <body>
+    <p>Bookmarklet Editor</p>
+    <div><small>Press Ctrl-Space for autocomplete, Link / Messages below autoupdate while editing  <span id="bookmark"></span></small></div>
+    <section class="code">
+    <textarea id="code">
+//iife                // <-- flag to wrap the whole thing in an iife, improves the optimization
+//title: Hello World  // <-- name for link (below)
+
+
+/** ///    <-- remove the space between * and / to activate code
+function hello1(a) {
+  alert('Hello '+a);
+}
+
+hello1('world!');
+// */
+
+/**/
+
+function makeDataURI(x, mt) {
+  if (!mt) mt = 'text/html';
+  x = encodeURI(x);
+  return 'data:'+mt+';,'+x;
+}
+function popup(url) {
+  window.open(url,'_blank','height=300,width=400');
+}
+function hello2(a) {
+  popup(makeDataURI('&lt;html&gt;&lt;body&gt;'+'Hello '+a+'&lt;/body&gt;&lt;/html&gt;', 'text/html'));
+}
+hello2('world');
+// */
+</textarea>
+    </section>
+    <section class="output" id="output">
+    </section>
+  </body>
+</html>
